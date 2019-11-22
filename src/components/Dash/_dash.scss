@@ -1,0 +1,37 @@
+$color: #3F3A60;
+
+.dash-outer-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+}
+.dash-inner-box {
+  height: 100%;
+  width: 50%;
+  background: white;
+}
+.dash-box {
+  display: flex;
+  margin-top: 3.5rem;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 3px 5px 5px 6px rgba(145,145,145,0.57); 
+  box-shadow: 3px 5px 5px 6px rgba(145,145,145,0.57);
+  padding: 10px;
+  text-decoration: none;
+  color: black
+}
+.fa-search {
+  color: gray;
+}
+.fa-star {
+  color: #fee715ff;
+}
+.fa-plus-circle {
+  color: $color;
+}
+.dash-box>h1 {
+  font-size: xx-large;
+  margin-left: 5.5rem;
+}

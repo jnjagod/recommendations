@@ -46,9 +46,12 @@ table {
   box-sizing: border-box
 }
 /* ----------------- End Reset File ----------------- */
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
 
 .App {
   text-align: center;
+  padding-top: 100px;
+  font-family: 'Fira Sans';
 }
 
 @import './components/Add/add';

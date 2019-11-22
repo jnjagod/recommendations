@@ -1,13 +1,34 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class Dash extends Component {
   render() {
     return (
-      <div>
-        Dash.js
+      <div className='dash-outer-box'>
+        <div className='dash-inner-box'>
+          <Link className='dash-box' to='/games'>
+            <i className="fas fa-search fa-8x"></i>
+            <h1>Browse</h1>
+          </Link>
+          <Link to='/' className='dash-box'>
+            <i className="far fa-star fa-8x"></i>
+            <h1> My Favorites</h1>
+          </Link>
+          <Link className='dash-box' to='/new'>
+            <i className="fas fa-plus-circle fa-8x"></i>
+            <h1>Add</h1>
+          </Link>
+        </div>
       </div>
     )
   }
 }
 
-export default Dash
+function mapStateToProps(reduxState) {
+  return reduxState
+}
+
+export default connect(mapStateToProps)(Dash)
+
+/*style={{visibility: this.props.is_admin ? "visible" : "hidden"}}*/
