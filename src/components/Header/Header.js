@@ -6,26 +6,27 @@ import Swal from 'sweetalert2'
 import { logout, updateUser } from '../../ducks/reducer'
 
 class Header extends Component {
-  // componentDidMount() {
-  //   axios
-  //     .get('/auth/me')
-  //     .then(res => {
-  //       console.log(res)
-  //       this.props.updateUser(res.data.user)
-  //     })
-  //     .catch(err => console.log(err))
-  // }
+  componentDidMount() {
+    axios
+      .get('/auth/me')
+      .then(res => {
+        this.props.updateUser(res.data.user)
+      })
+      .catch(err => console.log(err))
+  }
 
   logout = () => {
     axios
-      .delete('/auth/logout')
+      .post('/auth/logout')
       .then(res => {
+        this.props.logout()
         Swal.fire({
           title: res.data.message,
           icon: 'success',
-          timer: 1200
+          timer: 1200,
+          showConfirmButton: false
         })
-        this.props.logout()
+        this.props.history.push('/')
       })
       .catch(err => console.log(err))
   }
@@ -36,8 +37,8 @@ class Header extends Component {
       return (
         <header className='main-header'>
           <div className='header-user-box'>
-            <img className='profile-img' src='https://robohash.org/1' alt="" />
-            <p>username</p>
+            <img className='profile-img' src={this.props.profile_img} alt="" />
+            <p>{this.props.username}</p>
           </div>
           <div>
             <h1>A Thing is Here</h1>
@@ -47,9 +48,7 @@ class Header extends Component {
             <Link style={{ visibility: this.props.location.pathname === '/dashboard' && 'hidden' }} to='/dashboard'>
               <button>Dashboard</button>
             </Link>
-            <Link to='/'>
-              <button onClick={logout}>Logout</button>
-            </Link>
+            <button onClick={this.logout}>Logout</button>
           </div>
         </header>
       )

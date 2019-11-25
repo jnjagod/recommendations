@@ -11,11 +11,11 @@ class Dash extends Component {
             <i className="fas fa-search fa-8x"></i>
             <h1>Browse</h1>
           </Link>
-          <Link to='/' className='dash-box'>
+          <Link className='dash-box'>
             <i className="far fa-star fa-8x"></i>
             <h1> My Favorites</h1>
           </Link>
-          <Link className='dash-box' to='/new'>
+          <Link style={{ visibility: this.props.is_admin ? "visible" : "hidden" }} className='dash-box' to='/new'>
             <i className="fas fa-plus-circle fa-8x"></i>
             <h1>Add</h1>
           </Link>
@@ -26,9 +26,8 @@ class Dash extends Component {
 }
 
 function mapStateToProps(reduxState) {
-  return reduxState
+  const { is_admin } = reduxState
+  return { is_admin }
 }
 
 export default connect(mapStateToProps)(Dash)
-
-/*style={{visibility: this.props.is_admin ? "visible" : "hidden"}}*/

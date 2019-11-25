@@ -27,7 +27,8 @@ class Home extends Component {
           Swal.fire({
             title: res.data.message,
             icon: 'success',
-            timer: 1200
+            timer: 1200,
+            showConfirmButton: false
           })
           this.props.history.push('/dashboard')
         })
@@ -52,7 +53,8 @@ class Home extends Component {
         Swal.fire({
           title: res.data.message,
           icon: 'success',
-          timer: 1200
+          timer: 1200,
+          showConfirmButton: false
         })
         this.props.history.push('/dashboard')
       })

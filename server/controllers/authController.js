@@ -35,12 +35,11 @@ module.exports = {
     req.session.destroy()
     res.status(200).send({ message: 'Logged out.' })
   },
-  me: async (req, res) => {
-    const db = req.app.get('db')
-    const { user_id } = req.session
-    console.log(user_id)
-    const user = await db.get_user(user_id)
-    console.log(user)
-    res.status(200).send({ user: user })
+  loggedIn: (req, res) => {
+    if (req.session.user) {
+      res.status(200).send({ user: req.session.user })
+    } else {
+      res.status(401).send({ message: 'Please log in or register.' })
+    }
   }
 }

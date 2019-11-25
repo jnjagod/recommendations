@@ -43,20 +43,29 @@ table {
   border-spacing: 0;
 }
 * {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 /* ----------------- End Reset File ----------------- */
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
 
-.App {
-  text-align: center;
-  padding-top: 100px;
-  font-family: 'Fira Sans';
-}
-
+@import './components/scssVars.scss';
 @import './components/Add/add';
 @import './components/Browser/browser';
 @import './components/Dash/dash';
 @import './components/Header/header';
 @import './components/Game/game';
 @import './components/Home/home';
+
+.App {
+  text-align: center;
+  padding-top: 100px;
+  font-family: $mainFont;
+}
+
+input {
+  font-family: $mainFont;
+}
+
+button {
+  font-family: $mainFont;
+}

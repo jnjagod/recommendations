@@ -17,8 +17,8 @@ app.use(session({
 // Auth Endpoints
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
-app.delete('/auth/logout', authCtrl.logout)
-app.get('/auth/me', authCtrl.me)
+app.post('/auth/logout', authCtrl.logout)
+app.get('/auth/me', authCtrl.loggedIn)
 
 // 
 
