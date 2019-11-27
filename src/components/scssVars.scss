@@ -1,2 +1,10 @@
 $mainColor: #3F3A60;
 $mainFont: 'Fira Sans';
+
+$phone: 400px;
+
+@mixin phone {
+  @media (max-width: #{$phone}) {
+    @content;
+  }
+};

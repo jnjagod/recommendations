@@ -12,7 +12,7 @@ class Dash extends Component {
             <h1>Browse</h1>
           </Link>
           <Link className='dash-box'>
-            <i className="far fa-star fa-8x"></i>
+            <i className="fas fa-star fa-8x"></i>
             <h1> My Favorites</h1>
           </Link>
           <Link style={{ visibility: this.props.is_admin ? "visible" : "hidden" }} className='dash-box' to='/new'>

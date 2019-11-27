@@ -45,7 +45,7 @@ class Add extends Component {
           <form autoComplete='off' action="">
             <div className="top-box">
                 <p>Name:</p>
-                <input autoFocus onChange={this.handleChange} placeholder='name' value={this.state.name} name='name' type="text" className='name-input' />
+                <input autoFocus onChange={this.handleChange} placeholder='name' value={this.state.name} name='Name' type="text" className='name-input' />
             </div>
             <div className="imgurl-box">
               <p>Image URLs:</p>
@@ -56,7 +56,7 @@ class Add extends Component {
               <input onChange={this.handleChange} placeholder='Add Image URL' value={this.state.img5} name='img5' type="text" />
             </div>
             <p>Description:</p>
-            <textarea onChange={this.handleChange} placeholder='Description' value={this.state.description} name="description" id="" ></textarea>
+            <textarea className='add-desc' onChange={this.handleChange} placeholder='Description' value={this.state.description} name="description" id="" ></textarea>
             <div className="bottom-box">
               <div>
                 <p>Min Players:</p>

@@ -6,14 +6,14 @@ import Swal from 'sweetalert2'
 import { logout, updateUser } from '../../ducks/reducer'
 
 class Header extends Component {
-  componentDidMount() {
-    axios
-      .get('/auth/me')
-      .then(res => {
-        this.props.updateUser(res.data.user)
-      })
-      .catch(err => console.log(err))
-  }
+  // componentDidMount() {
+  //   axios
+  //     .get('/auth/me')
+  //     .then(res => {
+  //       this.props.updateUser(res.data.user)
+  //     })
+  //     .catch(err => console.log(err))
+  // }
 
   logout = () => {
     axios
@@ -40,7 +40,7 @@ class Header extends Component {
             <img className='profile-img' src={this.props.profile_img} alt="" />
             <p>{this.props.username}</p>
           </div>
-          <div>
+          <div className='site-header'>
             <h1>A Thing is Here</h1>
             <p className='sub-header'>Here is smaller.</p>
           </div>
