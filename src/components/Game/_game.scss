@@ -1,15 +1,13 @@
 .game-outer-box {
-  // border: 1px solid red;
   justify-content: center;
   flex-direction: column;
   .game-title-box {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 65%;
     margin: 20px 0;
     .fa-arrow-left {
       font-size: 24px;
+      cursor: pointer;
     }
     h1 {
       font-size: 24px;
@@ -22,7 +20,6 @@
     }
   }
   .gallery-box {
-    // border: 1px solid blue;
     display: 'flex';
     flex-direction: 'column';
     justify-content: 'center';
@@ -33,9 +30,12 @@
     }
   }
   .desc-box {
+    // border-left: 3px solid $mainColor;
+    // padding-left: 3px;
+    // background: lightgray;
     width: 65%;
     margin-top: 50px;
-    // border: 1px solid purple;
+    line-height: 1.2;
     .game-desc {
       font-family: $mainFont;
       font-size: 16px;
@@ -47,9 +47,7 @@
     margin-top: 30px;
     margin-bottom: 10px;
     width: 65%;
-    display: flex;
     justify-content: space-around;
-    align-items: center;
     .attr {
       font-weight: bold;
       margin-bottom: 10px;

@@ -18,15 +18,15 @@ class Game extends Component {
     return (
       <div>
         <main className='game-outer-box dfbox' >
-          <div className='game-title-box'>
+          <div className='game-title-box dfbox'>
             <div className='dfbox'>
-              <i className="fas fa-arrow-left"></i>
+              <i onClick={() => this.props.history.push('/games')} className="fas fa-arrow-left"></i>
               <h1>Gloomhaven</h1>
             </div>
             {!this.state.toggleFav ? <i onClick={this.toggleStar} className='far fa-star fa-2x'></i> : <i onClick={this.toggleStar} className='fas fa-star fa-2x'></i>}
           </div>
           <div className='gallery-box'>
-            <Gallery images={images} width='500' main={{ overlay: false, orientation: 'horizontal', hlColor: 'navy', hlSize: 10, size: 20 }} />
+            <Gallery images={images} width='500' main={{ overlay: false, orientation: 'horizontal', hlColor: 'navy', hlSize: 10, size: 30 }} />
           </div>
           <div className='desc-box'>
             <p className='game-desc' >Gloomhaven is a game of Euro-inspired tactical combat in a persistent world of shifting motives. Players will take on the role of a wandering adventurer with their own special set of skills and their own reasons for traveling to this dark corner of the world. Players must work together out of necessity to clear out menacing dungeons and forgotten ruins. In the process, they will enhance their abilities with experience and loot, discover new locations to explore and plunder, and expand an ever-branching story fueled by the decisions they make.
@@ -37,10 +37,10 @@ class Game extends Component {
               <br />
               Each turn, a player chooses two cards to play out of their hand. The number on the top card determines their initiative for the round. Each card also has a top and bottom power, and when it is a player’s turn in the initiative order, they determine whether to use the top power of one card and the bottom power of the other, or vice-versa. Players must be careful, though, because over time they will permanently lose cards from their hands. If they take too long to clear a dungeon, they may end up exhausted and be forced to retreat.</p>
           </div>
-          <div className='game-bot-box'>
+          <div className='game-bot-box dfbox'>
             <div>
               <p className='attr'>Players:</p>
-              <p>1-3</p>
+              <p>1-4</p>
             </div>
             <div>
               <p className='attr'>Complexity:</p>

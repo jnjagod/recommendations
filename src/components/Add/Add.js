@@ -45,7 +45,7 @@ class Add extends Component {
           <form autoComplete='off' action="">
             <div className="top-box">
                 <p>Name:</p>
-                <input autoFocus onChange={this.handleChange} placeholder='name' value={this.state.name} name='Name' type="text" className='name-input' />
+                <input autoFocus onChange={this.handleChange} placeholder='Name' value={this.state.name} name='Name' type="text" className='name-input' />
             </div>
             <div className="imgurl-box">
               <p>Image URLs:</p>
