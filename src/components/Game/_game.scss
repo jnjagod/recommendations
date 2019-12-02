@@ -6,8 +6,10 @@
     width: 65%;
     margin: 20px 0;
     .fa-arrow-left {
-      font-size: 24px;
+      font-size: 30px;
       cursor: pointer;
+      color: $mainColor;
+      // text-decoration: underline;
     }
     h1 {
       font-size: 24px;
@@ -30,12 +32,13 @@
     }
   }
   .desc-box {
-    // border-left: 3px solid $mainColor;
-    // padding-left: 3px;
-    // background: lightgray;
     width: 65%;
-    margin-top: 50px;
+    margin-top: 25px;
     line-height: 1.2;
+    border-radius: 10px;
+    border-top: 10px solid $mainColor;
+    border-bottom: 10px solid $mainColor;
+    padding: 10px 0px;
     .game-desc {
       font-family: $mainFont;
       font-size: 16px;

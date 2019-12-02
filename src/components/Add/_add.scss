@@ -1,7 +1,4 @@
-@import '../scssVars.scss';
-
 .add-desc {
-  resize: none;
   width: 90%;
   height: 20vh;
   margin-bottom: 10px;
@@ -52,15 +49,6 @@
 .small-input {
   width: 40%;
   text-align: center;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type=number] {
-  -moz-appearance:textfield;
 }
 
 .add-button {

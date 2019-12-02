@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 class Add extends Component {
   state = {
@@ -10,10 +12,27 @@ class Add extends Component {
     img4: '',
     img5: '',
     description: '',
-    min: 0,
-    max: 0,
-    difficulty: 0,
+    min_players: 0,
+    max_players: 0,
+    complexity: 0,
     price: 0
+  }
+
+  handleAdd = () => {
+    const { name, img1, img2, img3, img4, img5, description, min_players, max_players, complexity, price } = this.state
+    axios
+      .post('/api/games', { imgs: [img1, img2, img3, img4, img5], name, description, min_players, max_players, complexity, price })
+      .then(res => {
+        Swal.fire({
+          title: res.data.message,
+          icon: 'success',
+          timer: 1200,
+          showConfirmButton: false
+        })
+        this.props.history.push('/dashboard')
+      })
+      .catch(err => console.log(err)
+      )
   }
 
   handleChange = e => {
@@ -41,11 +60,13 @@ class Add extends Component {
     return (
       <div className='add-outer-box'>
         <div className="add-inner-box">
-          <button className='add-button'>Add</button>
+          <button
+            onClick={this.handleAdd}
+            className='add-button'>Add</button>
           <form autoComplete='off' action="">
             <div className="top-box">
-                <p>Name:</p>
-                <input autoFocus onChange={this.handleChange} placeholder='Name' value={this.state.name} name='Name' type="text" className='name-input' />
+              <p>Name:</p>
+              <input onChange={this.handleChange} placeholder='Name' value={this.state.name} name='name' type="text" className='name-input' />
             </div>
             <div className="imgurl-box">
               <p>Image URLs:</p>
@@ -60,13 +81,13 @@ class Add extends Component {
             <div className="bottom-box">
               <div>
                 <p>Min Players:</p>
-                <input min='1' max='99' className='small-input' onChange={this.handleNum} value={this.state.players} name='min' type="number" />
+                <input min='1' max='99' className='small-input' onChange={this.handleNum} value={this.state.players} name='min_players' type="number" />
                 <p>Max Players:</p>
-                <input min='1' max='99' className='small-input' onChange={this.handleNum} value={this.state.players} name='max' type="number" />
+                <input min='1' max='99' className='small-input' onChange={this.handleNum} value={this.state.players} name='max_players' type="number" />
               </div>
               <div className='select-box'>
                 <p>Complexity:</p>
-                <select onChange={this.handleNum} name='difficulty'>
+                <select onChange={this.handleNum} name='complexity'>
                   <option value=""></option>
                   <option value="1">1</option>
                   <option value="2">2</option>

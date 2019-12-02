@@ -1,7 +1,36 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class Browser extends Component {
+  state = {
+    games: []
+  }
+  componentDidMount = () => {
+    this.getAll()
+  }
+  getAll = () => {
+    axios
+      .get('/api/games')
+      .then(res => {
+        this.setState({ games: res.data })
+      })
+      .catch(err => console.log(err))
+  }
   render() {
+    let allGames = this.state.games.map(game => (
+      <div key={game.game_id} onClick={() => this.props.history.push(`/games/${game.game_id}`)} className="preview-box dfbox">
+        <img src={game.imgs[0]} alt="" />
+        <div className='prev-text dfcbox'>
+          <h2>{game.name}</h2>
+          <p> {game.description.substr(0, 258)}... </p>
+          <div className='prev-bot dfbox'>
+            <p>Players: {game.min_players}-{game.max_players} </p>
+            <p>Complexity: {game.complexity} </p>
+            <p>Price: ${game.price} </p>
+          </div>
+        </div>
+      </div>
+    ))
     return (
       <div className='browser-outer-box dfcbox'>
         <div className="browser-head">
@@ -46,18 +75,7 @@ class Browser extends Component {
             <button>Reset</button>
           </div>
           <div className="preview-container dfcbox">
-            <div onClick={() => this.props.history.push('/games/1')} className="preview-box dfbox">
-              <img src='https://images-na.ssl-images-amazon.com/images/I/81crhhZd63L._SY355_.jpg' alt="" />
-              <div className='prev-text dfcbox'>
-                <h2>Gloomhaven</h2>
-                <p>Gloomhaven is a game of Euro-inspired tactical combat in a persistent world of shifting motives. Players will take on the role of a wandering adventurer with their own special set of skills and their own reasons for traveling to this dark corner of the world... </p>
-                <div className='prev-bot dfbox'>
-                  <p>Players: 1-4</p>
-                  <p>Complexity: 4</p>
-                  <p>Price: $140.00</p>
-                </div>
-              </div>
-            </div>
+            {allGames}
           </div>
         </div>
       </div>

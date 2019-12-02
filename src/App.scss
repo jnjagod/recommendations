@@ -72,6 +72,15 @@ input {
   font-family: $mainFont;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
 button {
   font-family: $mainFont;
 }
@@ -84,4 +93,8 @@ button {
 .dfcbox {
   @extend .dfbox;
   flex-direction: column;
+}
+
+textarea {
+  resize: none;
 }

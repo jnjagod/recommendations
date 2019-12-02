@@ -18,6 +18,8 @@
       justify-content: space-evenly;
       width: 100%;
       margin-bottom: 5px;
+      text-decoration: underline;
+      color: $mainColor;
       p {
         cursor: pointer;
       }
@@ -56,6 +58,7 @@
           h2 {
             font-weight: bold;
             font-size: 18px;
+            align-self: flex-start;
           }
           .prev-bot {
             width: 100%;
