@@ -24,9 +24,9 @@ app.get('/auth/me', authCtrl.loggedIn)
 // Game Endpoints
 app.get('/api/games', gameCtrl.getAll)
 app.get('/api/games/:id', gameCtrl.getOne)
-app.post('/api/games', gameCtrl.add)
-app.delete('/api/games/:id', gameCtrl.delete)
-app.patch('/api/games/:id', gameCtrl.update)
+app.post('/api/games', gameCtrl.addGame)
+app.delete('/api/games/:id', gameCtrl.deleteGame)
+app.patch('/api/games/:id', gameCtrl.updateGame)
 
 massive(CONNECTION_STRING).then(db => {
   app.set('db', db)

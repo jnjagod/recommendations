@@ -3,11 +3,17 @@ import axios from 'axios'
 
 class Browser extends Component {
   state = {
-    games: []
+    games: [],
+    players: 0,
+    complexity: 0,
+    price: 0,
+    filter: false
   }
+
   componentDidMount = () => {
     this.getAll()
   }
+
   getAll = () => {
     axios
       .get('/api/games')
@@ -16,6 +22,22 @@ class Browser extends Component {
       })
       .catch(err => console.log(err))
   }
+
+  handleNum = e => {
+    const { name, value } = e.target
+    this.setState({
+      [name]: +value
+    })
+  }
+
+  resetFields = () => {
+    this.setState({
+      players: 0,
+      complexity: 0,
+      price: 0
+    })
+  }
+
   render() {
     let allGames = this.state.games.map(game => (
       <div key={game.game_id} onClick={() => this.props.history.push(`/games/${game.game_id}`)} className="preview-box dfbox">
@@ -44,35 +66,37 @@ class Browser extends Component {
           </div>
           <div className="filter-bar dfbox">
             <p>Players:</p>
-            <select>
+            <select name='players' onChange={this.handleNum}>
               <option value=""></option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-              <option value="">4</option>
-              <option value="">5</option>
-              <option value="">6+</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6+</option>
             </select>
             <p>Complexity:</p>
-            <select>
+            <select name='complexity' onChange={this.handleNum}>
               <option value=""></option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-              <option value="">4</option>
-              <option value="">5</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
             <p>Price:</p>
-            <select>
+            <select name='price' onChange={this.handleNum}>
               <option value=""></option>
-              <option value="">Under $25</option>
-              <option value="">Under $50</option>
-              <option value="">Under $75</option>
-              <option value="">Under $100</option>
-              <option value="">$125 and Over</option>
+              <option value="25">Under $25</option>
+              <option value="50">Under $50</option>
+              <option value="75">Under $75</option>
+              <option value="100">Under $100</option>
+              <option value="125">$125 and Over</option>
             </select>
             <button>Filter</button>
-            <button>Reset</button>
+            <button
+            onClick={this.resetFields}
+            >Reset</button>
           </div>
           <div className="preview-container dfcbox">
             {allGames}

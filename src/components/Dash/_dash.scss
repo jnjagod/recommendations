@@ -10,17 +10,25 @@ $color: #3F3A60;
   height: 100%;
   width: 50%;
   background: white;
+  @include phone {
+    width: 99%;
+  };
 }
 .dash-box {
   display: flex;
   margin-top: 3.5rem;
   justify-content: center;
   align-items: center;
-  -webkit-box-shadow: 3px 5px 5px 6px rgba(145,145,145,0.57); 
-  box-shadow: 3px 5px 5px 6px rgba(145,145,145,0.57);
   padding: 10px;
   text-decoration: none;
-  color: black
+  color: black;
+  @include phone {
+    border: 1px solid black;
+  };
+  @media (min-width: 735px) {
+    -webkit-box-shadow: 3px 5px 5px 6px rgba(145,145,145,0.57); 
+    box-shadow: 3px 5px 5px 6px rgba(145,145,145,0.57);
+  }
 }
 .fa-search {
   color: gray;

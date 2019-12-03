@@ -10,7 +10,7 @@ module.exports = {
     const game = await db.get_one({ game_id })
     res.status(200).send(game)
   },
-  add: (req, res) => {
+  addGame: (req, res) => {
     const db = req.app.get('db')
     const { imgs, name, description, min_players, max_players, complexity, price } = req.body
     db.add_game({ imgs, name, description, min_players, max_players, complexity, price })
@@ -22,13 +22,13 @@ module.exports = {
         res.status(500).send(err.message)
       })
   },
-  delete: (req, res) => {
+  deleteGame: (req, res) => {
     const db = req.app.get('db')
     const { id: game_id } = req.params
     db.delete_game({ game_id })
     res.status(200).send({ message: 'Game Deleted.' })
   },
-  update: async (req, res) => {
+  updateGame: async (req, res) => {
     const db = req.app.get('db')
     const { id: game_id } = req.params
     const { name, description, complexity, price } = req.body
