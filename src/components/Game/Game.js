@@ -107,7 +107,7 @@ class Game extends Component {
               {this.state.toggleEdit ? <input autoComplete='off' className='small-input' onChange={this.handleChange} name='price' value={this.state.price} type="number" /> : <p> ${this.state.price} </p>}
             </div>
           </div>
-          <div className='dfbox admin-box'>
+          <div className='dfbox admin-box' style={{ visibility: this.props.is_admin ? 'visible' : 'hidden' }} >
             {this.state.toggleEdit ? <button onClick={this.edit} >Done</button> : <button onClick={this.handleEdit} >Edit</button>}
             <button
               onClick={this.delete}
@@ -122,8 +122,9 @@ class Game extends Component {
 }
 
 function mapStateToProps(reduxState) {
+  const { is_admin } = reduxState
   return {
-    reduxState
+    is_admin
   }
 }
 

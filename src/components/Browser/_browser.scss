@@ -4,7 +4,9 @@
     padding: 1em;
     text-align: left;
     margin: 1em auto;
-    // line-height: 1.2;
+    // @include phone {
+    //   width: 99%;
+    // }
     h1 {
       font-size: 24px;
       font-weight: bold;
@@ -12,6 +14,9 @@
   }
   .browser-inner-box {
     width: 65%;
+    @include phone {
+      width: 99%;
+    }
     .browse-type {
       border: 1px solid black;
       padding: 7px;
@@ -25,15 +30,19 @@
       }
     }
     .filter-bar {
-      // visibility: hidden;
-      // border: 1px solid black;
       padding: 5px;
-      width: 100%;
+      width: 50%;
       justify-content: space-evenly;
+      @include phone {
+        width: 99%;
+        flex-direction: column;
+        height: 200px;
+        justify-content: space-around;
+      }
     }
     .preview-container {
       background: $mainColor;
-      min-height: 28.1em;
+      min-height: 28.3em;
       height: 100%;
       width: 100%;
       padding: 2em;
@@ -54,7 +63,6 @@
           justify-content: space-between;
           height: 150px;
           text-align: left;
-          // line-height: 1.2;
           h2 {
             font-weight: bold;
             font-size: 18px;
@@ -68,5 +76,20 @@
         }
       }
     }
+  }
+}
+
+.appear {
+  animation: appear .4s ease;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

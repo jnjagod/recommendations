@@ -41,4 +41,17 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script type="text/javascript">
+    const showAll = document.querySelector('#showAll')
+    const filter = document.querySelector('#filter')
+    const bar = document.querySelector('#bar')
+    function appear() {
+      bar.classList.add('appear')
+    }
+    function fade() {
+      bar.classList.remove('appear')
+    }
+    showAll.addEventListener('click', fade)
+    filter.addEventListener('click', appear)
+  </script>
 </html>
