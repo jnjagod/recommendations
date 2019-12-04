@@ -68,7 +68,7 @@ class Home extends Component {
     return (
       <div className='home dfcbox'>
         <div className='home-head dfbox'>
-          <h1>Table Time</h1>
+          <h1>Table Time Games</h1>
         </div>
         <div className='login-box'>
           <input autoComplete='off' onChange={this.handleChange} value={this.state.username} name='username' placeholder='Username' type="text" />

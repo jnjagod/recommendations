@@ -7,9 +7,8 @@ class Fav extends Component {
   }
 
   componentDidMount() {
-    
+
   }
-  
 
   render() {
     return (
@@ -21,9 +20,7 @@ class Fav extends Component {
 }
 
 function mapStateToProps(reduxState) {
-  return {
-    reduxState
-  }
+  return { reduxState }
 }
 
 export default connect(mapStateToProps)(Fav)

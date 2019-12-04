@@ -6,14 +6,18 @@ import Swal from 'sweetalert2'
 import { logout, updateUser } from '../../ducks/reducer'
 
 class Header extends Component {
-  // componentDidMount() {
-  //   axios
-  //     .get('/auth/me')
-  //     .then(res => {
-  //       this.props.updateUser(res.data.user)
-  //     })
-  //     .catch(err => console.log(err))
-  // }
+  componentDidMount() {
+    this.getMe()
+  }
+
+  getMe() {
+    axios
+      .get('/auth/me')
+      .then(res => {
+        this.props.updateUser(res.data.user)
+      })
+      .catch(err => console.log(err))
+  }
 
   logout = () => {
     axios

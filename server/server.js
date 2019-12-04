@@ -5,6 +5,7 @@ const massive = require('massive')
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 const authCtrl = require('./controllers/authController')
 const gameCtrl = require('./controllers/gameController')
+const favCtrl = require('./controllers/favController')
 
 const app = express()
 
@@ -27,6 +28,11 @@ app.get('/api/games/:id', gameCtrl.getOne)
 app.post('/api/games', gameCtrl.addGame)
 app.delete('/api/games/:id', gameCtrl.deleteGame)
 app.patch('/api/games/:id', gameCtrl.updateGame)
+
+//Fav Endpoints
+app.post('/api/favs', favCtrl.checkFav)
+app.post('/api/faves', favCtrl.addFav)
+app.post('/api/favers', favCtrl.removeFav)
 
 massive(CONNECTION_STRING).then(db => {
   app.set('db', db)

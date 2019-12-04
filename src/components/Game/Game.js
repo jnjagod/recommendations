@@ -18,11 +18,12 @@ class Game extends Component {
     toggleFav: false
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getGame()
+    this.checkFav()
   }
 
-  getGame() {
+  getGame = () => {
     const { id } = this.props.match.params
     axios
       .get(`/api/games/${id}`)
@@ -32,10 +33,40 @@ class Game extends Component {
       .catch(err => console.log(err))
   }
 
-  checkFav() {
+  checkFav = () => {
     const { user_id } = this.props
-    const { game_id } = this.state
+    const { id } = this.props.match.params
+    const game_id = parseInt(id)
+    axios
+      .post('/api/favs', { game_id, user_id })
+      .then(res => {
+        this.setState({ toggleFav: res.data })
+      })
+      .catch(err => console.log(err))
+  }
 
+  addFav = () => {
+    const { user_id } = this.props
+    const { id } = this.props.match.params
+    const game_id = parseInt(id)
+    axios
+      .post('/api/faves', { user_id, game_id })
+      .then(res => {
+        this.checkFav()
+      })
+      .catch(err => console.log(err))
+  }
+
+  removeFav = () => {
+    const { user_id } = this.props
+    const { id } = this.props.match.params
+    const game_id = parseInt(id)
+    axios
+      .post('/api/favers', { user_id, game_id })
+      .then(res => {
+        this.checkFav()
+      })
+      .catch(err => console.log(err))
   }
 
   editGame = () => {
@@ -66,12 +97,6 @@ class Game extends Component {
       .catch(err => console.log(err))
   }
 
-  toggleStar = () => {
-    this.setState({
-      toggleFav: !this.state.toggleFav
-    })
-  }
-
   handleEdit = () => {
     this.setState({
       toggleEdit: !this.state.toggleEdit
@@ -95,7 +120,7 @@ class Game extends Component {
               <i onClick={() => window.history.back()} className="fas fa-arrow-left"></i>
               {this.state.toggleEdit ? <input autoComplete='off' style={{ marginLeft: '10px' }} onChange={this.handleChange} name='name' value={this.state.name} type="text" /> : <h1> {this.state.name} </h1>}
             </div>
-            {!this.state.toggleFav ? <i onClick={this.toggleStar} className='far fa-star fa-2x'></i> : <i onClick={this.toggleStar} className='fas fa-star fa-2x'></i>}
+            {!this.state.toggleFav ? <i onClick={this.addFav} className='far fa-star fa-2x'></i> : <i onClick={this.removeFav} className='fas fa-star fa-2x'></i>}
           </div>
           <div className='gallery-box'>
             <Gallery images={images} width='500' main={{ overlay: false, orientation: 'horizontal', hlColor: 'navy', hlSize: 10, size: 30 }} />
