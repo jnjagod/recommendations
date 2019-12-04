@@ -52,10 +52,9 @@ class Browser extends Component {
   ))
 
   render() {
-    const { games } = this.state
+    const { games, players, price } = this.state
     let allGames = this.gamesMap(games)
     let filterGames = games.filter(game => {
-      const { players, price } = this.state
       const { min_players, max_players } = game
       if (players && price) {
         return min_players <= players && players <= max_players && game.price <= price
@@ -64,7 +63,7 @@ class Browser extends Component {
       } else if (!players && price) {
         return game.price <= price
       } else {
-        return games
+        return []
       }
     })
     return (

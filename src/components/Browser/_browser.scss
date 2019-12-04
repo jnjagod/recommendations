@@ -4,9 +4,6 @@
     padding: 1em;
     text-align: left;
     margin: 1em auto;
-    // @include phone {
-    //   width: 99%;
-    // }
     h1 {
       font-size: 24px;
       font-weight: bold;
@@ -14,6 +11,9 @@
   }
   .browser-inner-box {
     width: 65%;
+    @media (max-width: 900px) {
+      width: 80%;
+    }
     @include phone {
       width: 99%;
     }
@@ -36,7 +36,7 @@
       @include phone {
         width: 99%;
         flex-direction: column;
-        height: 200px;
+        height: 100px;
         justify-content: space-around;
       }
     }
@@ -46,6 +46,9 @@
       height: 100%;
       width: 100%;
       padding: 2em;
+      @include phone {
+        padding: 10px 5px;
+      }
       .preview-box {
         background: white;
         width: 100%;
@@ -55,9 +58,22 @@
         margin-bottom: 2em;
         cursor: pointer;
         border-radius: 7px;
+        @include phone {
+          -webkit-box-shadow: 3px 3px 0px 0px black; 
+          box-shadow: 3px 3px 0px 0px black;
+          margin-bottom: 15px;
+        }
         img {
           max-width: 200px;
           max-height: 200px;
+          @media (max-width: 900px) {
+            max-width: 150px;
+            max-height: 150px;
+          }
+          @include phone {
+            max-width: 100px;
+            max-height: 100px;
+          }
         }
         .prev-text {
           justify-content: space-between;
@@ -67,6 +83,20 @@
             font-weight: bold;
             font-size: 18px;
             align-self: flex-start;
+            @media (max-width: 900px) {
+              font-size: 16px;
+            }
+            @include phone {
+              font-size: 14px;
+            }
+          }
+          p {
+            @media (max-width: 900px) {
+              font-size: 13px;
+            }
+            @include phone {
+              font-size: 13px;
+            }
           }
           .prev-bot {
             width: 100%;

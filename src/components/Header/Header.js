@@ -6,14 +6,14 @@ import Swal from 'sweetalert2'
 import { logout, updateUser } from '../../ducks/reducer'
 
 class Header extends Component {
-  componentDidMount() {
-    axios
-      .get('/auth/me')
-      .then(res => {
-        this.props.updateUser(res.data.user)
-      })
-      .catch(err => console.log(err))
-  }
+  // componentDidMount() {
+  //   axios
+  //     .get('/auth/me')
+  //     .then(res => {
+  //       this.props.updateUser(res.data.user)
+  //     })
+  //     .catch(err => console.log(err))
+  // }
 
   logout = () => {
     axios
@@ -41,8 +41,8 @@ class Header extends Component {
             <p>{this.props.username}</p>
           </div>
           <div className='site-header'>
-            <h1>A Thing is Here</h1>
-            <p className='sub-header'>Here is smaller.</p>
+            <h1>Table Time Games</h1>
+            <p className='sub-header'>Recommendations for you.</p>
           </div>
           <div className='header-button-box'>
             <Link style={{ visibility: this.props.location.pathname === '/dashboard' && 'hidden' }} to='/dashboard'>

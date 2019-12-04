@@ -10,12 +10,18 @@
   align-items: center;
   color: white;
   padding: 0 20px;
+  @include phone {
+    height: 80px;
+  }
   .header-user-box {
     .profile-img {
       border-radius: 50%;
       background: white;
       max-width: 70px;
       height: auto;
+      @include phone {
+        max-width: 50px;
+      }
     }
   }
   .site-header {
@@ -25,6 +31,10 @@
     }
     .sub-header {
       text-align: right;
+      @include phone {
+        text-align: center;
+        display: none;
+      }
     }
   }
   .header-button-box {

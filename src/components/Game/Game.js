@@ -19,6 +19,10 @@ class Game extends Component {
   }
 
   componentDidMount() {
+    this.getGame()
+  }
+
+  getGame() {
     const { id } = this.props.match.params
     axios
       .get(`/api/games/${id}`)
@@ -28,7 +32,13 @@ class Game extends Component {
       .catch(err => console.log(err))
   }
 
-  edit = () => {
+  checkFav() {
+    const { user_id } = this.props
+    const { game_id } = this.state
+
+  }
+
+  editGame = () => {
     const { id } = this.props.match.params
     const { name, description, complexity, price } = this.state
     axios
@@ -40,7 +50,7 @@ class Game extends Component {
       .catch(err => console.log(err))
   }
 
-  delete = () => {
+  deleteGame = () => {
     const { id } = this.props.match.params
     axios
       .delete(`/api/games/${id}`)
@@ -82,7 +92,7 @@ class Game extends Component {
         <main className='game-outer-box dfbox' >
           <div className='game-title-box dfbox'>
             <div className='dfbox'>
-              <i onClick={() => this.props.history.push('/games')} className="fas fa-arrow-left"></i>
+              <i onClick={() => window.history.back()} className="fas fa-arrow-left"></i>
               {this.state.toggleEdit ? <input autoComplete='off' style={{ marginLeft: '10px' }} onChange={this.handleChange} name='name' value={this.state.name} type="text" /> : <h1> {this.state.name} </h1>}
             </div>
             {!this.state.toggleFav ? <i onClick={this.toggleStar} className='far fa-star fa-2x'></i> : <i onClick={this.toggleStar} className='fas fa-star fa-2x'></i>}
@@ -108,9 +118,9 @@ class Game extends Component {
             </div>
           </div>
           <div className='dfbox admin-box' style={{ visibility: this.props.is_admin ? 'visible' : 'hidden' }} >
-            {this.state.toggleEdit ? <button onClick={this.edit} >Done</button> : <button onClick={this.handleEdit} >Edit</button>}
+            {this.state.toggleEdit ? <button onClick={this.editGame} >Done</button> : <button onClick={this.handleEdit} >Edit</button>}
             <button
-              onClick={this.delete}
+              onClick={this.deleteGame}
             >Delete</button>
           </div>
         </main>
@@ -122,9 +132,10 @@ class Game extends Component {
 }
 
 function mapStateToProps(reduxState) {
-  const { is_admin } = reduxState
+  const { is_admin, user_id } = reduxState
   return {
-    is_admin
+    is_admin,
+    user_id
   }
 }
 

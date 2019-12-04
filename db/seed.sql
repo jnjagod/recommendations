@@ -1,3 +1,4 @@
+drop table if exists favorites;
 drop table if exists hash;
 drop table if exists games;
 drop table if exists users;
@@ -40,3 +41,12 @@ values (array ['https://images-na.ssl-images-amazon.com/images/I/81crhhZd63L._SY
 This is a game with a persistent and changing world that is ideally played over many game sessions. After a scenario, players will make decisions on what to do, which will determine how the story continues, kind of like a “Choose Your Own Adventure” book. Playing through a scenario is a cooperative affair where players will fight against automated monsters using an innovative card system to determine the order of play and what a player does on their turn.
 
 Each turn, a player chooses two cards to play out of their hand. The number on the top card determines their initiative for the round. Each card also has a top and bottom power, and when it is a player’s turn in the initiative order, they determine whether to use the top power of one card and the bottom power of the other, or vice-versa. Players must be careful, though, because over time they will permanently lose cards from their hands. If they take too long to clear a dungeon, they may end up exhausted and be forced to retreat.', 1, 4, 4, 140.00);
+
+create table favorites (
+  user_id int references users(user_id), 
+  game_id int references games(game_id)
+);
+
+insert into favorites (user_id, game_id)
+values (1, 1),
+(1, 2);

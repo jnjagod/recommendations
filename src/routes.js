@@ -5,6 +5,7 @@ import Add from './components/Add/Add'
 import Dash from './components/Dash/Dash'
 import Game from './components/Game/Game'
 import Browser from './components/Browser/Browser'
+import Fav from './components/Fav/Fav'
 
 export default (
   <Switch>
@@ -13,5 +14,6 @@ export default (
     <Route path='/dashboard' component={Dash} />
     <Route path='/games/:id' component={Game} />
     <Route path='/games' component={Browser} />
+    <Route path='/favorites' component={Fav} />
   </Switch>
 )
