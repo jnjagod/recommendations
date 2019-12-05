@@ -46,7 +46,7 @@ class Header extends Component {
           </div>
           <div className='site-header'>
             <h1>Table Time Games</h1>
-            <p className='sub-header'>Recommendations for you.</p>
+            <p className='sub-header'>Hello there.</p>
           </div>
           <div className='header-button-box'>
             <Link style={{ visibility: this.props.location.pathname === '/dashboard' && 'hidden' }} to='/dashboard'>
@@ -61,7 +61,11 @@ class Header extends Component {
 }
 
 function mapStateToProps(reduxState) {
-  return reduxState
+  const { username, profile_img } = reduxState
+  return {
+    username,
+    profile_img
+  }
 }
 
 const mapDispatchToProps = {

@@ -55,13 +55,13 @@ table {
 }
 /* End Reset File */
 
+@import './components/Fav/fav';
 @import './components/Add/add';
 @import './components/Browser/browser';
 @import './components/Dash/dash';
 @import './components/Header/header';
 @import './components/Game/game';
 @import './components/Home/home';
-@import './components/Fav/fav';
 
 .App {
   text-align: center;
@@ -88,6 +88,14 @@ input[type=number] {
 
 button {
   font-family: $mainFont;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  background: white;
+  color: $mainColor;
+  height: 30px;
+  -webkit-box-shadow: 3px 3px 0px 0px black; 
+  box-shadow: 3px 3px 0px 0px black;
 }
 
 .dfbox {

@@ -112,13 +112,14 @@ class Game extends Component {
 
   render() {
     let images = [this.state.imgs[0], this.state.imgs[1], this.state.imgs[2], this.state.imgs[3], this.state.imgs[4]]
+    const uri = encodeURI(this.state.name)
     return (
       <div>
         <main className='game-outer-box dfbox' >
           <div className='game-title-box dfbox'>
             <div className='dfbox'>
               <i onClick={() => window.history.back()} className="fas fa-arrow-left"></i>
-              {this.state.toggleEdit ? <input autoComplete='off' style={{ marginLeft: '10px' }} onChange={this.handleChange} name='name' value={this.state.name} type="text" /> : <h1> {this.state.name} </h1>}
+              {this.state.toggleEdit ? <input autoComplete='off' style={{ marginLeft: '10px' }} onChange={this.handleChange} name='name' value={this.state.name} type="text" /> : <a target='_blank' rel="noopener noreferrer" href={`https://www.amazon.com/s?k=${uri}&ref=nb_sb_noss_2`}> {this.state.name} </a>}
             </div>
             {!this.state.toggleFav ? <i onClick={this.addFav} className='far fa-star fa-2x'></i> : <i onClick={this.removeFav} className='fas fa-star fa-2x'></i>}
           </div>
@@ -142,6 +143,7 @@ class Game extends Component {
               {this.state.toggleEdit ? <input autoComplete='off' className='small-input' onChange={this.handleChange} name='price' value={this.state.price} type="number" /> : <p> ${this.state.price} </p>}
             </div>
           </div>
+          <p className='amazon'>Click the title to check Amazon.com prices!</p>
           <div className='dfbox admin-box' style={{ visibility: this.props.is_admin ? 'visible' : 'hidden' }} >
             {this.state.toggleEdit ? <button onClick={this.editGame} >Done</button> : <button onClick={this.handleEdit} >Edit</button>}
             <button

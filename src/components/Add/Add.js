@@ -31,8 +31,12 @@ class Add extends Component {
         })
         this.props.history.push('/dashboard')
       })
-      .catch(err => console.log(err)
-      )
+      .catch(err => {
+        Swal.fire({
+          title: err.response.data.message,
+          icon: 'error'
+        })
+      })
   }
 
   handleChange = e => {
@@ -56,13 +60,13 @@ class Add extends Component {
   }
 
   render() {
-    if (this.props.is_admin) {
+    // if (this.props.is_admin) {
     return (
       <div className='add-outer-box'>
         <div className="add-inner-box">
           <button
             onClick={this.handleAdd}
-            className='add-button'>Add</button>
+            className='add-button'>Add Game</button>
           <form autoComplete='off' action="">
             <div className="top-box">
               <p>Name:</p>
@@ -105,7 +109,7 @@ class Add extends Component {
         </div>
       </div>
     )
-    } else { return null }
+    // } else { return null }
   }
 }
 

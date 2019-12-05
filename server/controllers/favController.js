@@ -1,6 +1,9 @@
 module.exports = {
-  getFavs: (req, res) => {
-
+  getFavs: async (req, res) => {
+    const db = req.app.get('db')
+    const { id: user_id } = req.params
+    const favs = await db.get_favs({user_id})
+    res.status(200).send(favs)
   },
   checkFav: async (req, res) => {
     const db = req.app.get('db')

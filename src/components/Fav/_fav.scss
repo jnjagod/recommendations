@@ -1,0 +1,50 @@
+@import '../scssVars.scss';
+
+.fav-outer-box {
+  justify-content: center;
+  .fav-title {
+    font-size: 24px;
+    margin: 20px auto;
+    text-decoration: underline;
+    margin-left: 20px;
+  }
+  .fav-inner-box {
+    background: $mainColor;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 60%;
+    padding-top: 10px;
+    min-height: 36.9em;
+    @include phone {
+      min-height: 38.2em;
+    }
+    @media (max-width: 520px) {
+      width: 99%;
+    }
+    .fav-box {
+      background: #fff;
+      border-radius: 7px;
+      padding: 0px 15px;
+      margin: 12px;
+      justify-content: space-around;
+      cursor: pointer;
+      -webkit-box-shadow: 3px 3px 0px 0px black; 
+      box-shadow: 3px 3px 0px 0px black;
+      @media (min-width: 1200px) {
+        max-width: 45%;
+        min-width: 45%;
+      }
+      img {
+        max-width: 200px;
+        max-height: 200px;
+        @media (max-width: 600px) {
+          max-width: 150px;
+          max-height: 150px;
+        }
+      }
+      h1 {
+        font-size: 18px;
+      }
+    }
+  }
+}
