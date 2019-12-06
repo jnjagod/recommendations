@@ -110,11 +110,19 @@ class Game extends Component {
     })
   }
 
+  complex = () => {
+    Swal.fire({
+      title: 'What is Complexity?',
+      text: 'As it is used here, complexity represents a rating of how difficult a game is to understand. A higher complexity rating generally means that more time needs to be invested into reading the rules to properly play the game.',
+      icon: 'question'
+    })
+  }
+
   render() {
     let images = [this.state.imgs[0], this.state.imgs[1], this.state.imgs[2], this.state.imgs[3], this.state.imgs[4]]
     const uri = encodeURI(this.state.name)
     return (
-      <div>
+      <>
         <main className='game-outer-box dfbox' >
           <div className='game-title-box dfbox'>
             <div className='dfbox'>
@@ -135,7 +143,7 @@ class Game extends Component {
               <p> {this.state.min_players}-{this.state.max_players} </p>
             </div>
             <div>
-              <p className='attr'>Complexity:</p>
+              <p onClick={this.complex} className='complex attr'>Complexity:</p>
               {this.state.toggleEdit ? <input autoComplete='off' className='small-input' onChange={this.handleChange} name='complexity' value={this.state.complexity} type="number" /> : <p> {this.state.complexity} </p>}
             </div>
             <div>
@@ -143,17 +151,17 @@ class Game extends Component {
               {this.state.toggleEdit ? <input autoComplete='off' className='small-input' onChange={this.handleChange} name='price' value={this.state.price} type="number" /> : <p> ${this.state.price} </p>}
             </div>
           </div>
-          <p className='amazon'>Click the title to check Amazon.com prices!</p>
+          <p id='amazon'>Click the title to check Amazon.com prices!</p>
           <div className='dfbox admin-box' style={{ visibility: this.props.is_admin ? 'visible' : 'hidden' }} >
-            {this.state.toggleEdit ? <button onClick={this.editGame} >Done</button> : <button onClick={this.handleEdit} >Edit</button>}
+            {this.state.toggleEdit ? <button onClick={this.editGame} >Done</button> : <button onClick={this.handleEdit} >Edit Game</button>}
             <button
               onClick={this.deleteGame}
-            >Delete</button>
+            >Delete Game</button>
           </div>
         </main>
         <div className='comments-box'>
         </div>
-      </div>
+      </>
     )
   }
 }

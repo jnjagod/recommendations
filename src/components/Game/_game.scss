@@ -55,15 +55,21 @@
       font-weight: bold;
       margin-bottom: 10px;
     }
+    .complex {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
-  .amazon {
+  div+#amazon {
     margin: 20px 0px;
     font-style: italic;
   }
   .admin-box {
     margin-bottom: 25px;
+    margin-right: 17%;
+    align-self: flex-end;
     button {
-      margin: 0 50px;
+      margin: 0 25px;
     }
   }
 }

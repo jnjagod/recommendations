@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 class Browser extends Component {
   state = {
@@ -36,15 +37,23 @@ class Browser extends Component {
     })
   }
 
+  complex = () => {
+    Swal.fire({
+      title: 'What is Complexity?',
+      text: 'As it is used here, complexity represents a rating of how difficult a game is to understand. A higher complexity rating generally means that more time needs to be invested into reading the rules to properly play the game.',
+      icon: 'question'
+    })
+  }
+
   gamesMap = arr => arr.map(game => (
-    <div key={game.game_id} onClick={() => this.props.history.push(`/games/${game.game_id}`)} className="preview-box dfbox">
-      <img src={game.imgs[0]} alt="" />
+    <div key={game.game_id} className="preview-box dfbox">
+      <img onClick={() => this.props.history.push(`/games/${game.game_id}`)} src={game.imgs[0]} alt="" />
       <div className='prev-text dfcbox'>
-        <h2>{game.name}</h2>
-        <p> {game.description.substr(0, 258)}... </p>
+        <h2 onClick={() => this.props.history.push(`/games/${game.game_id}`)} className='prev-name'>{game.name}</h2>
+        <p onClick={() => this.props.history.push(`/games/${game.game_id}`)} className='prev-desc'> {game.description.substr(0, 258)}... </p>
         <div className='prev-bot dfbox'>
           <p>Players: {game.min_players}-{game.max_players} </p>
-          <p>Complexity: {game.complexity} </p>
+          <p onClick={this.complex} className='complex'>Complexity: {game.complexity} </p>
           <p>Price: ${game.price} </p>
         </div>
       </div>

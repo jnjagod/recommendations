@@ -35,8 +35,22 @@ class Header extends Component {
       .catch(err => console.log(err))
   }
   render() {
-    if (this.props.location.pathname === '/') {
-      return null
+    if (this.props.location.pathname === '/' || this.props.location.pathname === '/about') {
+      return (
+        <header className='main-header'>
+          <div className='header-user-box'>
+            <img className='profile-img' src='https://static.thenounproject.com/png/1151432-200.png' alt="" />
+          </div>
+          <div className='site-header'>
+            <h1>Table Time Games</h1>
+            <p className='sub-header'>For board game fanatics.</p>
+          </div>
+          <div style={{ visibility: 'hidden' }} className='header-button-box'>
+            <button>Dashboard</button>
+            <button>Logout</button>
+          </div>
+        </header>
+      )
     } else {
       return (
         <header className='main-header'>
@@ -46,7 +60,7 @@ class Header extends Component {
           </div>
           <div className='site-header'>
             <h1>Table Time Games</h1>
-            <p className='sub-header'>Hello there.</p>
+            <p className='sub-header'>For board game fanatics.</p>
           </div>
           <div className='header-button-box'>
             <Link style={{ visibility: this.props.location.pathname === '/dashboard' && 'hidden' }} to='/dashboard'>

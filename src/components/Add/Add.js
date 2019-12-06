@@ -60,7 +60,6 @@ class Add extends Component {
   }
 
   render() {
-    // if (this.props.is_admin) {
     return (
       <div className='add-outer-box'>
         <div className="add-inner-box">
@@ -109,7 +108,6 @@ class Add extends Component {
         </div>
       </div>
     )
-    // } else { return null }
   }
 }
 

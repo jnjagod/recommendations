@@ -67,15 +67,17 @@ class Home extends Component {
   render() {
     return (
       <div className='home dfcbox'>
-        <div className='home-head dfbox'>
-          <h1>Table Time Games</h1>
-        </div>
-        <div className='login-box'>
-          <input autoComplete='off' onChange={this.handleChange} value={this.state.username} name='username' placeholder='Username' type="text" />
-          <input autoComplete='off' onChange={this.handleChange} value={this.state.password} name='password' placeholder='Password' type="password" />
-          <button onClick={this.login}>Login</button>
-          <button onClick={this.register}>Register</button>
-          <h1>But I don't know what to call it.</h1>
+        <div className='home-inner-box dfcbox'>
+          <h1 id='welcome'>Welcome!</h1>
+          <p>First time visiting? Go ahead and register.</p>
+          <p>If not, you can just log in.</p>
+          <div className='log-box dfcbox'>
+            <input autoComplete='off' onChange={this.handleChange} value={this.state.username} name='username' placeholder='Username' type="text" />
+            <input autoComplete='off' onChange={this.handleChange} value={this.state.password} name='password' placeholder='Password' type="password" />
+            <button onClick={this.login}>Login</button>
+            <button onClick={this.register}>Register</button>
+          </div>
+          <p>If you're curious about the purpose of this place, click <p style={{display: 'inline', textDecoration: 'underline', cursor: 'pointer'}} onClick={() => {this.props.history.push('/about')}}>here</p> for a brief explanation.</p>
         </div>
       </div>
     )

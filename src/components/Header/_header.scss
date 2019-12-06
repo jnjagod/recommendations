@@ -20,7 +20,7 @@
       max-width: 70px;
       height: auto;
       @include phone {
-        max-width: 50px;
+        max-width: 55px;
       }
     }
   }
@@ -31,8 +31,10 @@
     }
     .sub-header {
       text-align: right;
-      @include phone {
+      @media (max-width: 550px) {
         text-align: center;
+      };
+      @include phone {
         display: none;
       }
     }
