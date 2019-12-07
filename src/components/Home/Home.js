@@ -72,12 +72,14 @@ class Home extends Component {
           <p>First time visiting? Go ahead and register.</p>
           <p>If not, you can just log in.</p>
           <div className='log-box dfcbox'>
-            <input autoComplete='off' onChange={this.handleChange} value={this.state.username} name='username' placeholder='Username' type="text" />
-            <input autoComplete='off' onChange={this.handleChange} value={this.state.password} name='password' placeholder='Password' type="password" />
-            <button onClick={this.login}>Login</button>
-            <button onClick={this.register}>Register</button>
+            <input maxLength='20' autoComplete='off' onChange={this.handleChange} value={this.state.username} name='username' placeholder='Username' type="text" />
+            <input maxLength='30' autoComplete='off' onChange={this.handleChange} value={this.state.password} name='password' placeholder='Password' type="password" />
+            <div className='home-buttons'>
+              <button onClick={this.login}>Login</button>
+              <button style={{marginLeft: '20px'}} onClick={this.register}>Register</button>
+            </div>
           </div>
-          <p>If you're curious about the purpose of this place, click <p style={{display: 'inline', textDecoration: 'underline', cursor: 'pointer'}} onClick={() => {this.props.history.push('/about')}}>here</p> for a brief explanation.</p>
+          <p>If you're curious about the purpose of this place, click <p style={{ display: 'inline', textDecoration: 'underline', cursor: 'pointer' }} onClick={() => { this.props.history.push('/about') }}>here</p> for a brief explanation.</p>
         </div>
       </div>
     )

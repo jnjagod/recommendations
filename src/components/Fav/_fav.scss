@@ -10,6 +10,7 @@
   }
   .fav-inner-box {
     background: $mainColor;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 60%;

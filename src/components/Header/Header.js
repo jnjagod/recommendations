@@ -42,7 +42,7 @@ class Header extends Component {
             <img className='profile-img' src='https://static.thenounproject.com/png/1151432-200.png' alt="" />
           </div>
           <div className='site-header'>
-            <h1>Table Time Games</h1>
+            <h1>Table Time Gaming</h1>
             <p className='sub-header'>For board game fanatics.</p>
           </div>
           <div style={{ visibility: 'hidden' }} className='header-button-box'>
@@ -59,7 +59,7 @@ class Header extends Component {
             <p>{this.props.username}</p>
           </div>
           <div className='site-header'>
-            <h1>Table Time Games</h1>
+            <h1>Table Time Gaming</h1>
             <p className='sub-header'>For board game fanatics.</p>
           </div>
           <div className='header-button-box'>

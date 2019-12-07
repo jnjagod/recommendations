@@ -1,4 +1,6 @@
 drop table if exists favorites;
+drop table if exists posts;
+drop table if exists suggestions;
 drop table if exists hash;
 drop table if exists games;
 drop table if exists users;
@@ -50,3 +52,19 @@ create table favorites (
 insert into favorites (user_id, game_id)
 values (1, 1),
 (1, 2);
+
+create table posts (
+post_id serial primary key,
+game_id int references games(game_id),
+user_id int references users(user_id),
+content varchar(505)
+);
+
+insert into posts (game_id, user_id, content)
+values(1, 1, 'I love this game.');
+
+create table suggestions (
+suggest_id serial primary key,
+title varchar,
+user_id int references users(user_id)
+);

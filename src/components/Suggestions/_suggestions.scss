@@ -1,0 +1,71 @@
+.suggest-outer-box {
+  justify-content: center;
+  padding-top: 30px;
+  .suggest-inner-box {
+    width: 65%;
+    @include phone {
+      width: 100%;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .posting-box {
+      width: 70%;
+      justify-content: space-around;
+      margin: 20px;
+      @include phone {
+        width: 100%;
+      }
+      input {
+        width: 55%;
+        @include phone {
+          width: 65%;
+        }
+      }
+    }
+    .suggest-display {
+      width: 100%;
+      padding: 10px 0;
+      background: $mainColor;
+      min-height: 69.8vh;
+      .suggest-box {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        background: white;
+        border-radius: 7px;
+        width: 80%;
+        padding: 3px;
+        margin: 10px 0px;
+        -webkit-box-shadow: 3px 3px 0px 0px black;
+        box-shadow: 3px 3px 0px 0px black;
+        @include phone {
+          width: 98%;
+        }
+        .fa-trash-alt {
+          position: absolute;
+          cursor: pointer;
+          right: 3px;
+          font-size: 18px;
+          color: $mainColor;
+        }
+        .suggest-user {
+          justify-content: flex-start;
+          margin-right: 10px;
+          font-size: 12px;
+          img {
+            max-width: 50px;
+            border-radius: 50%;
+            @include phone {
+              max-width: 58px;
+            }
+          }
+        }
+        .suggest-text {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}

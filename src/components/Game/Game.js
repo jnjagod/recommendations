@@ -15,12 +15,15 @@ class Game extends Component {
     complexity: 0,
     price: 0,
     toggleEdit: false,
-    toggleFav: false
+    toggleFav: false,
+    posts: [],
+    content: ''
   }
 
   componentDidMount = () => {
     this.getGame()
     this.checkFav()
+    this.getPosts()
   }
 
   getGame = () => {
@@ -50,7 +53,7 @@ class Game extends Component {
     const { id } = this.props.match.params
     const game_id = parseInt(id)
     axios
-      .post('/api/faves', { user_id, game_id })
+      .post('/api/newfav', { user_id, game_id })
       .then(res => {
         this.checkFav()
       })
@@ -62,7 +65,7 @@ class Game extends Component {
     const { id } = this.props.match.params
     const game_id = parseInt(id)
     axios
-      .post('/api/favers', { user_id, game_id })
+      .post('/api/notfav', { user_id, game_id })
       .then(res => {
         this.checkFav()
       })
@@ -118,9 +121,63 @@ class Game extends Component {
     })
   }
 
+  handleChange = (e) => {
+    const { name, value } = e.target
+    this.setState({
+      [name]: value
+    })
+  }
+
+  getPosts = () => {
+    const { id } = this.props.match.params
+    axios
+      .get(`/api/posts/${id}`)
+      .then(res => this.setState({ posts: res.data }))
+      .catch(err => console.log(err))
+  }
+
+  addPost = () => {
+    const { game_id, content } = this.state
+    const { user_id } = this.props
+    axios
+      .post('/api/posts', { game_id, user_id, content })
+      .then(res => {
+        this.getPosts()
+      })
+      .catch(err => {
+        Swal.fire({
+          title: err.response.data.message,
+          icon: 'error'
+        })
+      })
+  }
+
+  deletePost(id) {
+    axios
+      .delete(`/api/posts/${id}`)
+      .then(res => {
+        this.getPosts()
+      })
+      .catch(err => console.log(err))
+  }
+
   render() {
     let images = [this.state.imgs[0], this.state.imgs[1], this.state.imgs[2], this.state.imgs[3], this.state.imgs[4]]
     const uri = encodeURI(this.state.name)
+    let postMap = this.state.posts.map(post => (
+      <div key={post.post_id} className="comment-box">
+        <div style={{visibility: this.props.is_admin || post.username === this.props.username ? 'visible' : 'hidden'}} onClick={() => {this.deletePost(post.post_id)}} className="delete-post">
+          <i className="far fa-trash-alt"></i>
+        </div>
+        <div className='comment-user dfcbox'>
+          <img src={post.profile_img} alt="" />
+        </div>
+        <div className="post-text">
+          <p> {post.username} </p>
+          <span> {post.content} </span>
+        </div>
+      </div>
+    ))
     return (
       <>
         <main className='game-outer-box dfbox' >
@@ -159,7 +216,22 @@ class Game extends Component {
             >Delete Game</button>
           </div>
         </main>
-        <div className='comments-box'>
+        <div className='comments-outer-box dfbox'>
+          <div className="comments-inner-box dfcbox">
+            <h1>Thoughts? Opinions? Leave a comment!</h1>
+            <section className='posting-box dfbox'>
+              <textarea name='content' value={this.state.content} onChange={this.handleChange} placeholder='Maximum 500 Characters...' maxLength='500' type="text" />
+              <button
+                onClick={() => {
+                  this.addPost();
+                  this.setState({ content: '' })
+                }}
+              >Post Comment</button>
+            </section>
+            <div className="comments-display dfcbox">
+              {postMap}
+            </div>
+          </div>
         </div>
       </>
     )
@@ -167,10 +239,12 @@ class Game extends Component {
 }
 
 function mapStateToProps(reduxState) {
-  const { is_admin, user_id } = reduxState
+  const { is_admin, user_id, username, profile_img } = reduxState
   return {
     is_admin,
-    user_id
+    user_id,
+    username,
+    profile_img
   }
 }
 

@@ -62,6 +62,8 @@ table {
 @import './components/Header/header';
 @import './components/Game/game';
 @import './components/Home/home';
+@import './components/About/about';
+@import './components/Suggestions/suggestions';
 
 .App {
   text-align: center;
@@ -99,9 +101,11 @@ button {
 }
 
 button:focus {
+  outline: 0;
+  border-radius: 10px;
   background: $mainColor;
   color: white;
-  outline: 0;
+  border: 1px solid lightskyblue;
 }
 
 .dfbox {

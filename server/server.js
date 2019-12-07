@@ -8,6 +8,8 @@ const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 const authCtrl = require('./controllers/authController')
 const gameCtrl = require('./controllers/gameController')
 const favCtrl = require('./controllers/favController')
+const postCtrl = require('./controllers/postController')
+const suggestCtrl = require('./controllers/suggestController')
 
 // Middleware
 const auth = require('./middleware/authMiddleware')
@@ -20,6 +22,7 @@ app.use(session({
   saveUninitialized: false,
   secret: SESSION_SECRET
 }))
+app.use(express.static(`${__dirname}/../build`))
 
 // Auth Endpoints
 app.post('/auth/register', authCtrl.register)
@@ -36,9 +39,19 @@ app.patch('/api/games/:id', auth.adminsOnly, gameCtrl.updateGame)
 
 // Fav Endpoints
 app.post('/api/favs', favCtrl.checkFav)
-app.post('/api/faves', favCtrl.addFav)
-app.post('/api/favers', favCtrl.removeFav)
+app.post('/api/newfav', favCtrl.addFav)
+app.post('/api/notfav', favCtrl.removeFav)
 app.get('/api/favs/:id', favCtrl.getFavs)
+
+// Post Endpoints
+app.get('/api/posts/:id', postCtrl.getPosts)
+app.post('/api/posts', auth.usersOnly, postCtrl.addPost)
+app.delete('/api/posts/:id', postCtrl.deletePost)
+
+// Suggestion Endpoints
+app.get('/api/suggestions', suggestCtrl.getSuggestions)
+app.post('/api/suggestions', auth.usersOnly, suggestCtrl.addSuggestion)
+app.delete('/api/suggestions/:id', suggestCtrl.deleteSuggestion)
 
 massive(CONNECTION_STRING).then(db => {
   app.set('db', db)

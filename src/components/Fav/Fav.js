@@ -29,7 +29,7 @@ class Fav extends Component {
           <i className='fas fa-star fa-2x'></i>
           <h1 className='fav-title'>My Favorites</h1>
         </div>
-        <div className='fav-inner-box dfbox'>
+        <div className='fav-inner-box'>
           {myFavs}
         </div>
       </div>

@@ -65,11 +65,87 @@
     font-style: italic;
   }
   .admin-box {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     margin-right: 17%;
     align-self: flex-end;
+    border: 3px solid red;
+    height: 50px;
     button {
       margin: 0 25px;
+    }
+  }
+}
+.comments-outer-box {
+  justify-content: center;
+  .comments-inner-box {
+    width: 65%;
+    @include phone {
+      width: 100%;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    .posting-box {
+      width: 90%;
+      justify-content: space-around;
+      margin: 20px;
+      @include phone {
+        width: 100%;
+      }
+      textarea {
+        width: 75%;
+        height: 100px;
+        @include phone {
+          width: 65%;
+        }
+      }
+    }
+    .comments-display {
+      width: 100%;
+      padding: 20px 0;
+      background: $mainColor;
+      .comment-box {
+        display: flex;
+        justify-content: flex-start;
+        position: relative;
+        border: 1px solid lightgray;
+        background: white;
+        border-radius: 7px;
+        width: 80%;
+        padding: 10px;
+        margin: 10px 0px;
+        -webkit-box-shadow: 3px 3px 0px 0px black;
+        box-shadow: 3px 3px 0px 0px black;
+        @include phone {
+          width: 98%;
+        }
+        .fa-trash-alt {
+          position: absolute;
+          cursor: pointer;
+          top: 10px;
+          right: 10px;
+          font-size: 24px;
+          color: $mainColor;
+        }
+        .comment-user {
+          justify-content: flex-start;
+          margin-right: 10px;
+          img {
+            max-width: 70px;
+            border-radius: 50%;
+            @include phone {
+              max-width: 58px;
+            }
+          }
+        }
+        .post-text {
+          text-align: left;
+          p {
+            margin-bottom: 10px;
+            font-weight: bold;
+          }
+        }
+      }
     }
   }
 }
