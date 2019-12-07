@@ -10,6 +10,7 @@ const gameCtrl = require('./controllers/gameController')
 const favCtrl = require('./controllers/favController')
 const postCtrl = require('./controllers/postController')
 const suggestCtrl = require('./controllers/suggestController')
+const twilioCtrl = require('./controllers/twilioController')
 
 // Middleware
 const auth = require('./middleware/authMiddleware')
@@ -33,7 +34,7 @@ app.get('/auth/me', authCtrl.loggedIn)
 // Game Endpoints
 app.get('/api/games', gameCtrl.getAll)
 app.get('/api/games/:id', gameCtrl.getOne)
-app.post('/api/games', auth.adminsOnly, gameCtrl.addGame)
+app.post('/api/games', auth.adminsOnly, gameCtrl.addGame, twilioCtrl.sendAlert)
 app.delete('/api/games/:id', auth.adminsOnly, gameCtrl.deleteGame)
 app.patch('/api/games/:id', auth.adminsOnly, gameCtrl.updateGame)
 

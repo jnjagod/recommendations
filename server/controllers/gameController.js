@@ -10,7 +10,7 @@ module.exports = {
     const game = await db.get_one({ game_id })
     res.status(200).send(game)
   },
-  addGame: (req, res) => {
+  addGame: (req, res, next) => {
     const db = req.app.get('db')
     const { imgs, name, description, min_players, max_players, complexity, price } = req.body
     db.add_game({ imgs, name, description, min_players, max_players, complexity, price })
@@ -21,6 +21,7 @@ module.exports = {
         console.log(err)
         res.status(500).send(err.message)
       })
+    // next()
   },
   deleteGame: (req, res) => {
     const db = req.app.get('db')
