@@ -21,7 +21,7 @@ module.exports = {
         console.log(err)
         res.status(500).send(err.message)
       })
-    // next()
+    next()
   },
   deleteGame: (req, res) => {
     const db = req.app.get('db')
